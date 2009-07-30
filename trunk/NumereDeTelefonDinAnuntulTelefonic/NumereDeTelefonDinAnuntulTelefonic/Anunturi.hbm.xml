@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="false">
+  <class name="NumereDeTelefonDinAnuntulTelefonic.Anunt, NumereDeTelefonDinAnuntulTelefonic" table="Anunt">
+    <id	name="Id" column="Id" type="Int32" >
+      <generator class="increment" />
+    </id>
+    <property name="Continut" column="Continut" type="String" length="500"/>
+    <property name="DataIndroducerii" column="DataIndroducerii" type="DateTime"/>
+    <property name="Pret" column="Pret" type="Int32"/>
+  </class>
+
+  <class name="NumereDeTelefonDinAnuntulTelefonic.Numar, NumereDeTelefonDinAnuntulTelefonic" table="Numar">
+    <id	name="Id" column="Id" type="Int32">
+      <generator class="increment" />
+    </id>
+    <many-to-one name="Anunt" class="NumereDeTelefonDinAnuntulTelefonic.Anunt, NumereDeTelefonDinAnuntulTelefonic" column="AnuntId" />
+    <property name="Nr" column="Nr" type="String" length="250" />
+  </class>
+</hibernate-mapping>

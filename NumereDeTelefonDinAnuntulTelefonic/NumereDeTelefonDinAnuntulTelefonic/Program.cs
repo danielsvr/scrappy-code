@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
+using System.Net;
+using System.Text.RegularExpressions;
 using NHibernate;
 using NHibernate.Cfg;
-using GoldParser;
-using System.Net;
-using System.IO;
-using System.Text.RegularExpressions;
 using RZ.Web;
 
 namespace NumereDeTelefonDinAnuntulTelefonic
@@ -51,9 +48,9 @@ namespace NumereDeTelefonDinAnuntulTelefonic
                 .AddAssembly(typeof(Anunt).Assembly)
                 .BuildSessionFactory();
             ISession session = factory.OpenSession();
-            for (int i = 0; i < 35; i++)
+            for (int i = 0; i < 23; i++)
             {
-                WebRequest r = WebRequest.Create("http://www.anuntul.ro/index.php?menu=anunturi&RubricaID=1&SubrubricaID=4&page=" + i.ToString());
+                WebRequest r = WebRequest.Create("http://www.anuntul.ro/index.php?menu=anunturi&RubricaID=1&SubrubricaID=5&page=" + i.ToString());
                 WebResponse rs = r.GetResponse();
                 StreamReader sr = new StreamReader(rs.GetResponseStream());
                 string rstr = sr.ReadToEnd();
@@ -145,6 +142,7 @@ namespace NumereDeTelefonDinAnuntulTelefonic
                 }
             }
             session.Flush();
+            Console.WriteLine("GAAAAAAATTTTTTTAAAAAAAAAA");
         }
     }
 }
